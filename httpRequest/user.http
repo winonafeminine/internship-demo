@@ -1,0 +1,13 @@
+@base_url = http://localhost:5028
+@user_api = {{base_url}}/api/users
+
+### Get all user
+# @name users
+@users_url = {{user_api}} 
+GET {{users_url}}
+
+
+### Get a user
+# @name users_id
+@users_id_url = {{user_api}}/Kim
+GET {{users_id_url}}
