@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using internship_api.Models.product;
-using Pomelo.EntityFrameworkCore.MySql;
+using internship_api.Models.user;
 
 namespace internship_api.Models
 {
@@ -11,11 +11,8 @@ namespace internship_api.Models
         {
         }
 
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     optionsBuilder.UseMySql(conStr);
-        // }
 
-        public virtual DbSet<Product> IntProducts { get; set; }
+        public virtual DbSet<Product>? IntProducts { get; set; }
+        public virtual DbSet<User>? IntUsers { get; set; }
     }   
 }

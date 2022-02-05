@@ -1,4 +1,4 @@
-@base_url = http://localhost:5028
+@base_url = http://localhost:5000
 @user_api = {{base_url}}/api/users
 
 ### Get all user
@@ -9,5 +9,19 @@ GET {{users_url}}
 
 ### Get a user
 # @name users_id
-@users_id_url = {{user_api}}/Kim
+@users_id_url = {{user_api}}/kim
 GET {{users_id_url}}
+
+
+
+
+### add new user
+# @name craete_user
+@craete_user_url = {{user_api}}
+POST {{craete_user_url}}
+Content-Type: application/json
+
+{
+    "Name": "Romdon",
+    "LastName": "Uma"
+}

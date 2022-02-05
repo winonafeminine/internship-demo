@@ -1,5 +1,6 @@
 using internship_api.Models;
 using Microsoft.EntityFrameworkCore;
+using internship_api.Models.user;
 // using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,10 @@ builder.Services.AddDbContextPool<IntDbContext>(options => {
         Microsoft.EntityFrameworkCore.ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("InternConStr"))
         );
 });
+
+
+// register all the dependency injections
+builder.Services.AddScoped<IUser, UserImp>();
 
 var app = builder.Build();
 

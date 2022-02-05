@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using internship_api.Models.user;
+using internship_api.Models.user.model;
+using internship_api.Models.user.route;
+using internship_api.Models;
 
 namespace internship_api.Controllers.user
 {
@@ -8,41 +11,45 @@ namespace internship_api.Controllers.user
     [Route("api/users")]
     public class UserController : ControllerBase
     {
+        private readonly IUser userRepo;
+        public UserController(IUser userRepo)
+        {
+            this.userRepo = userRepo;
+        }
+
+
+        // add new user to db
+        // take 2 required props
+        // Name, LastName
+        [HttpPost]
+        public async Task<ActionResult<Res>> Post([FromBody] AddModel model)
+        {
+            Res res = await userRepo.AddAsync(model);
+            return Ok(res);
+        }
         
+
+        // get the user by name
 
         [Route("{name}")]
         [HttpGet]
-        public ActionResult<User> Get([FromRoute] string? name)
+        public async Task<ActionResult<UserModel>> Get([FromRoute] GetRoute route)
         {
-            IEnumerable<User> users = new List<User>(){
-                new User{
-                    Name="Romdon",
-                    LastName="Uma"
-                },
-                new User{
-                    Name="Kim",
-                    LastName="Wang"
-                }
-            };
-            
-            User? user = users.Where(u => u.Name == name).FirstOrDefault();
-            return Ok(user);
+            UserModel model = await userRepo.GetAsync(route);
+
+            if(model.UserId == null)
+                return NoContent();
+
+            return Ok(model);
         }
 
-        public ActionResult<IEnumerable<User>> Get()
-        {
-            IEnumerable<User> users = new List<User>(){
-                new User{
-                    Name="Romdon",
-                    LastName="Uma"
-                },
-                new User{
-                    Name="Kim",
-                    LastName="Wang"
-                }
-            };
+        
 
-            return Ok(users);
+        public ActionResult<IEnumerable<UserModel>> Get()
+        {
+            IEnumerable<UserModel> models = userRepo.GetRange();
+
+            return Ok(models);
         }
     }
 }

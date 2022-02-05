@@ -52,6 +52,10 @@ services:
     image: mariadb
     # restart behavior
     restart: always
+
+    # map the volue
+    volumes:
+      - ./db_data/:/var/lib/mysql
     # env
     environment:
       MYSQL_ROOT_PASSWORD: P@ssw0rd
