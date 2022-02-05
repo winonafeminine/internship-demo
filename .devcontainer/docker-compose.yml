@@ -30,6 +30,7 @@ services:
       # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
       - /var/run/docker.sock:/var/run/docker.sock 
 
+
     # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
     # cap_add:
     #   - SYS_PTRACE
@@ -38,3 +39,55 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     command: /bin/sh -c "while sleep 1000; do :; done"
+
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    # specify the db name
+    network_mode: service:mariadb
+  
+  # use mysql -u root -p for testing the db
+  # the same as mysql
+  mariadb:
+    # image to use
+    image: mariadb
+    # restart behavior
+    restart: always
+    # env
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd
+
+    ports:
+      - 3306:3306
+
+
+  # for monitoring the database
+  # web-base monitoring
+  # Server: use *hostname -I* the server ip
+  # Username: root
+  # Password: P@ssw0rd
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports: 
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+
+
+  # for monitoring and manage the docker container
+  # navigate to https://localhost:9443
+  # username: admin
+  # password: P@ssw0rd
+  portainer:
+    image: portainer/portainer-ce:2.11.0
+    restart: always
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    volumes:
+      - /run/docker.sock:/var/run/docker.sock
+      - ./portainer_data/:/data # need to have ./ if use the folder here
+
+
+
+

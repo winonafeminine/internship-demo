@@ -12,7 +12,7 @@
 	// 		"NODE_VERSION": "lts/*"
 	// 	}
 	// },
-	"dockerComposeFile": ["./docker-compose.yml", "./docker-compose.dev.yml"],
+	"dockerComposeFile": ["./docker-compose.yml"],
 	"service": "dotnet",
 	"workspaceFolder": "/",
 	"shutdownAction": "stopCompose",
@@ -28,7 +28,7 @@
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5001],
+	"forwardPorts": [5000, 5001, 8080, 8000, 9443],
 
 	// [Optional] To reuse of your local HTTPS dev cert:
 	//
