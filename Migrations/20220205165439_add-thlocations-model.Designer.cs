@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using internship_api.Models;
 
@@ -10,9 +11,10 @@ using internship_api.Models;
 namespace internship_api.Migrations
 {
     [DbContext(typeof(IntDbContext))]
-    partial class IntDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220205165439_add-thlocations-model")]
+    partial class addthlocationsmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
