@@ -9,7 +9,7 @@ services:
     # ensure the UID and GID of the container user you create matches your local user. 
     # See https://aka.ms/vscode-remote/containers/non-root for details.
     #
-    user: vscode
+    # user: vscode
 
     # Uncomment if you want to override the service's Dockerfile to one in the .devcontainer 
     # folder. Note that the path of the Dockerfile and context is relative to the *primary* 
@@ -17,15 +17,15 @@ services:
     # array). The sample below assumes your primary file is in the root of your project.
     #
     build:
-      context: .
-      dockerfile: ./Dockerfile
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
       args:
-        - "VARIANT=6.0"
-        - "NODE_VERSION=lts/*"
+        VARIANT: 6.0
+        NODE_VERSION: "lts/*"
 
     volumes:
       # Update this to wherever you want VS Code to mount the folder of your project
-      - .:/workspace:cached
+      - ..:/workspace:cached
 
       # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
       - /var/run/docker.sock:/var/run/docker.sock 
@@ -38,7 +38,8 @@ services:
     #   - seccomp:unconfined
 
     # Overrides default command so things don't shut down after the process ends.
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    # command: /bin/sh -c "while sleep 1000; do :; done"
+    command: sleep infinity
 
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
@@ -54,8 +55,8 @@ services:
     restart: always
 
     # map the volue
-    volumes:
-      - ./db_data/:/var/lib/mysql
+    # volumes:
+    #   - ./db_data/:/var/lib/mysql
     # env
     environment:
       MYSQL_ROOT_PASSWORD: P@ssw0rd
