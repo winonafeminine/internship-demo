@@ -24,12 +24,16 @@ builder.Services.AddDbContextPool<IntDbContext>(options => {
         );
 });
 
-
 // register all the dependency injections
 builder.Services.AddScoped<IUser, UserImp>();
 builder.Services.AddScoped<IThLocation, ThLocationImp>();
 
 var app = builder.Build();
+
+// using (var serviceScope = app.)
+// {
+    
+// }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

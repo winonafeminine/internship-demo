@@ -91,14 +91,10 @@ services:
       - "9443:9443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./portainer_data/:/data # need to have ./ if use the folder here
+      - internship-pt-volume:/data # need to have ./ if use the folder here
 
-
+# volume need to use this way
+# if not it will cause omnisharp error(if map the volume with local dir)
 volumes:
   internship-db-volume:
-    driver: local
-    driver_opts:
-      type: none 
-      device: /workspaces/internship-demo/.devcontainer/db_data
-      o: bind
-
+  internship-pt-volume:
