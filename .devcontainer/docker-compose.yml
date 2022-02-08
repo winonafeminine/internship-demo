@@ -92,7 +92,3 @@ services:
     volumes:
       - /run/docker.sock:/var/run/docker.sock
       - ./portainer_data/:/data # need to have ./ if use the folder here
-
-
-
-

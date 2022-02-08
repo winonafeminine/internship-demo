@@ -15,7 +15,7 @@
 	"dockerComposeFile": "./docker-compose.yml",
 	"service": "dotnet",
 	"workspaceFolder": "/workspace",
-	// "shutdownAction": "stopCompose",
+	"shutdownAction": "stopCompose",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {},
