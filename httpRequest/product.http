@@ -1,0 +1,16 @@
+@base_url = http://localhost:5028
+@api_url = {{base_url}}/api/product
+
+
+### Get all products
+# @name product
+@get_all_url = {{api_url}}
+GET {{get_all_url}}
+
+
+
+
+### Get a product
+# @name product_name
+@get_url = {{api_url}}
+GET {{get_url}}/Spray

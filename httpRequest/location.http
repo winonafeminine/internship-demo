@@ -1,0 +1,8 @@
+@base_url = http://localhost:5000
+@location_api = {{base_url}}/api/locations
+
+### Get locations by parameter
+# @name location_by_param
+@location_by_param_url = {{location_api}} 
+GET {{location_by_param_url}}
+    ?limit=5&name=ปั
