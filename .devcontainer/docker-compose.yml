@@ -55,8 +55,8 @@ services:
     restart: always
 
     # map the volue
-    # volumes:
-    #   - ./db_data/:/var/lib/mysql
+    volumes:
+      - internship-db-volume:/var/lib/mysql
     # env
     environment:
       MYSQL_ROOT_PASSWORD: P@ssw0rd
@@ -90,5 +90,15 @@ services:
       - "8000:8000"
       - "9443:9443"
     volumes:
-      - /run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer_data/:/data # need to have ./ if use the folder here
+
+
+volumes:
+  internship-db-volume:
+    driver: local
+    driver_opts:
+      type: none 
+      device: /workspaces/internship-demo/.devcontainer/db_data
+      o: bind
+
