@@ -3,12 +3,16 @@
 > ## Instruction
 > Use wsl For developing in remote container(`Recommend`)
 
-### Steps:
+### Initial Steps:
   - Clone this repo
   - Press cntrl + shift + p then select `Open folder in container`
   - Wait till finish
   - Run `dotnet ef database update` for update/migrate db
   - Done.
+
+### Done using the container:
+  - Open in wsl
+  - run `./scripts/stop-dc.sh`
 
 ### Optional
 Add the location table
