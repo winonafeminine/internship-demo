@@ -9,7 +9,7 @@ services:
     # ensure the UID and GID of the container user you create matches your local user. 
     # See https://aka.ms/vscode-remote/containers/non-root for details.
     #
-    # user: vscode
+    user: vscode
 
     # Uncomment if you want to override the service's Dockerfile to one in the .devcontainer 
     # folder. Note that the path of the Dockerfile and context is relative to the *primary* 
@@ -83,15 +83,15 @@ services:
   # navigate to https://localhost:9443
   # username: admin
   # password: P@ssw0rd
-  portainer:
-    image: portainer/portainer-ce:2.11.0
-    restart: always
-    ports:
-      - "8000:8000"
-      - "9443:9443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - internship-pt-volume:/data # need to have ./ if use the folder here
+  # portainer:
+  #   image: portainer/portainer-ce:2.11.0
+  #   restart: always
+  #   ports:
+  #     - "8000:8000"
+  #     - "9443:9443"
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - internship-pt-volume:/data # need to have ./ if use the folder here
 
 # volume need to use this way
 # if not it will cause omnisharp error(if map the volume with local dir)
