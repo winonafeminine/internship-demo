@@ -4,6 +4,7 @@ using internship_api.Models.locations.thLocation;
 using internship_api.Models.user;
 
 
+
 namespace internship_api.Models
 {
     public partial class IntDbContext : Microsoft.EntityFrameworkCore.DbContext
@@ -46,5 +47,6 @@ namespace internship_api.Models
         public virtual DbSet<Product> IntProducts { get; set; } = null!;
         public virtual DbSet<User> IntUsers { get; set; } = null!;
         public virtual DbSet<ThLocation> IntThLocations { get; set; } = null!;
+        
     }   
 }

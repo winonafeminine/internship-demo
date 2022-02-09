@@ -5,4 +5,4 @@
 # @name location_by_param
 @location_by_param_url = {{location_api}} 
 GET {{location_by_param_url}}
-    ?limit=5&name=ปั
+    ?limit=5&name=นราธิวาส

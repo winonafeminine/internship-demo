@@ -1,9 +1,9 @@
 @base_url = http://localhost:5000
-@api_url = {{base_url}}/api/product
+@api_url = {{base_url}}/api/landing
 
 
 ### Get all products
-# @name product
+# @name landing
 @get_all_url = {{api_url}}
 GET {{get_all_url}}
 
@@ -11,6 +11,6 @@ GET {{get_all_url}}
 
 
 ### Get a product
-# @name product_name
+# @name landing_name
 @get_url = {{api_url}}
-GET {{get_url}}/Spray
+GET {{get_url}}/Barsoap
